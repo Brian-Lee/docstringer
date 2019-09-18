@@ -2,8 +2,18 @@
 # Embarass yourself into adding real docstrings
 
 import os
+import getpass
+getpass.getuser()
 
-docstring = "\t'''BrianIsAnidiot'''\n"
+
+try:
+    embarassee = getpass.getuser()#can we make this insult personal?
+except:
+    embarassee = 'ThisProgrammer' #good enough
+
+docstring = "'''" + str(embarassee) + "IsAnIdiot'''\n"
+current_indentation = ''
+
 
 dir_contents = os.listdir()
 python_files = []
@@ -12,9 +22,7 @@ for file_or_dir in dir_contents:
         python_files.append(file_or_dir)
 
 def is_function_def(line):
-	'''BrianIsAnidiot'''
     if(('def ' in line) and (':' in line)):
-	'''BrianIsAnidiot'''
         return True
 
 
@@ -23,8 +31,21 @@ def is_not_docstring(line):
         return True
 
 
+def get_indentation_of_line(line):
+    try:
+        stripped = line.lstrip()
+        length_difference = len(line) - len(stripped)
+        indentation_whitespace = line[:length_difference]
+    except:
+        indentation_whitespace = '\t'
+
+    if len(indentation_whitespace) < 1:
+        indentation_whitespace = '\t'
+
+    assert(len(indentation_whitespace) > 0)
+    return indentation_whitespace
+
 def add_docstrings_to_python_file(filename):
-	'''BrianIsAnidiot'''
     new_lines = []
     with(open(filename,'r')) as f:
         lines = f.readlines()
@@ -33,7 +54,8 @@ def add_docstrings_to_python_file(filename):
         for line in lines:
 
             if(is_function_def(line_above) and is_not_docstring(line)):
-                new_lines.append(docstring)
+                current_indentation = get_indentation_of_line(line)
+                new_lines.append(current_indentation + docstring)
             new_lines.append(line)
             line_above = line
     f.close()
@@ -45,3 +67,5 @@ def add_docstrings_to_python_file(filename):
 
 for python_file in python_files:
     add_docstrings_to_python_file(python_file)
+
+print(add_docstrings_to_python_file.__doc__)
