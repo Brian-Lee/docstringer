@@ -1,7 +1,8 @@
-def test_func():
+def test_func1():
     test_var = "this isn't really much of a variable"
 
 def test_func2():
+
     a = 1
     b = a + 10
 
@@ -14,4 +15,9 @@ def test_func3():
 def test_func4(input):
 	#this is test_func4
 	print(input)
-	retun True
+	return True
+	
+print(test_func1.__doc__)
+print(test_func2.__doc__)
+print(test_func3.__doc__)
+print(test_func4.__doc__)
