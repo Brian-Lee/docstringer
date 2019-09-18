@@ -6,3 +6,7 @@ def test_func2():
     b = a + 10
 
     return b
+
+def test_func3():
+    ''' this function was already documented'''
+    this_function_doesnt_really_do_much = True

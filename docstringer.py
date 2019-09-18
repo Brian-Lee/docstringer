@@ -24,4 +24,5 @@ with(open(filename,'r')) as f:
 f.close()
 
 print(new_lines)
+# eventually we need to write new_lines back to filename
 #with(open(filename,'w')) as f:
