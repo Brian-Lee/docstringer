@@ -1,5 +1,12 @@
 # Add embarassing docstrings to all undocstrung functions
 # Embarass yourself into adding real docstrings
+# TODO: improve is_function_def() - at least some false positives
+#       improve is_not_docstring() - at least some false negatives
+#
+#   It would be nice if we could get all the help docs for all functions and see thst they are all done correctly
+#
+##################################################################
+
 
 import os
 import getpass
@@ -30,7 +37,6 @@ def is_not_docstring(line):
     if ("'''" not in line):
         return True
 
-
 def get_indentation_of_line(line):
     try:
         stripped = line.lstrip()
@@ -60,7 +66,7 @@ def add_docstrings_to_python_file(filename):
             line_above = line
     f.close()
 
-    out_filename = filename
+    out_filename = filename #write to the same file we read from
     out_file = open(out_filename, "w")
     out_file.writelines(new_lines)
     out_file.close()
@@ -68,4 +74,4 @@ def add_docstrings_to_python_file(filename):
 for python_file in python_files:
     add_docstrings_to_python_file(python_file)
 
-print(add_docstrings_to_python_file.__doc__)
+#print(add_docstrings_to_python_file.__doc__)
