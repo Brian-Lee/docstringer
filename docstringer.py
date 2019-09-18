@@ -3,7 +3,7 @@
 
 import os
 
-docstring = "'''BrianIsAnidiot'''\n"
+docstring = "\t'''BrianIsAnidiot'''\n"
 
 dir_contents = os.listdir()
 python_files = []
@@ -11,13 +11,10 @@ for file_or_dir in dir_contents:
     if file_or_dir[-3:] == '.py':
         python_files.append(file_or_dir)
 
-
-
-
-
-
 def is_function_def(line):
+	'''BrianIsAnidiot'''
     if(('def ' in line) and (':' in line)):
+	'''BrianIsAnidiot'''
         return True
 
 
@@ -27,6 +24,7 @@ def is_not_docstring(line):
 
 
 def add_docstrings_to_python_file(filename):
+	'''BrianIsAnidiot'''
     new_lines = []
     with(open(filename,'r')) as f:
         lines = f.readlines()
