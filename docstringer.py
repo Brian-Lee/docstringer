@@ -29,12 +29,11 @@ for file_or_dir in dir_contents:
         python_files.append(file_or_dir)
 
 def is_function_def(line):
-    if(('def ' in line) and (':' in line)):
+    if((line.lstrip()[:3] == 'def') and line.rstrip()[-1] == ':' ):
         return True
 
-
 def is_not_docstring(line):
-    if ("'''" not in line):
+    if (line.lstrip()[:3] != "'''"):
         return True
 
 def get_indentation_of_line(line):
