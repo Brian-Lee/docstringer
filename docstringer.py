@@ -33,7 +33,7 @@ def is_function_def(line):
         return True
 
 def is_not_docstring(line):
-    if (line.lstrip()[:3] != "'''"):
+    if (line.lstrip()[:3] != "'''" and line.lstrip()[:3] != '"""'):
         return True
 
 def get_indentation_of_line(line):
